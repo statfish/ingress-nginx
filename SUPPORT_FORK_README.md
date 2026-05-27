@@ -1,14 +1,12 @@
-# Stainless ingress-nginx Fork
+# ingress-nginx Fork
 
-Fork of [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx) maintained by Stainless to patch critical vulnerabilities after the upstream project was retired (March 2026).
+Fork of [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx) maintained by Stainless AI to patch critical vulnerabilities after the upstream project was retired (March 2026).
 
 ## Why This Fork Exists
 
 The Kubernetes ingress-nginx project announced retirement in November 2025 and formally wound down in March 2026. v1.15.1 is the last upstream release. No further security patches will be issued upstream.
 
 On May 14, 2026, **CVE-2026-42945 ("NGINX Rift")** was disclosed — a critical (CVSS 9.2) heap buffer overflow in `ngx_http_rewrite_module` that has existed since NGINX 0.6.27 (2008). It allows unauthenticated remote code execution or denial of service when specific rewrite configurations are used. Active exploitation in the wild began May 16, 2026.
-
-Our statfish-prod cluster runs ingress-nginx with the vulnerable pattern (`rewrite-target: /$2` with unnamed PCRE captures) across dozens of ingresses created dynamically by Kallisto.
 
 ## What Was Changed
 
